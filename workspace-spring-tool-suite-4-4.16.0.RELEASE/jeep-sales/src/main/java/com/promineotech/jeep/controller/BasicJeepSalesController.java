@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import com.promineotech.jeep.enitiy.Jeep;
+import com.promineotech.jeep.enitiy.JeepModel;
 import com.promineotech.jeep.service.JeepSaleService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +21,7 @@ public class BasicJeepSalesController implements JeepSalesController {
     private JeepSaleService jeepsSalesService;
 
     @Override
-    public List<Jeep> fetchJeeps(String model, String trim) {
+    public List<Jeep> fetchJeeps(JeepModel model, String trim) {
 	log.debug("model={}, trim={}", model, trim);
 	return jeepsSalesService.fetchJeeps(model, trim);
     }

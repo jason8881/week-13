@@ -1,10 +1,7 @@
 package com.promineotech.jeep.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
-
 import com.promineotech.jeep.controller.support.FetchJeepTestSupport;
 import com.promineotech.jeep.enitiy.Jeep;
 import com.promineotech.jeep.enitiy.JeepModel;
@@ -42,7 +38,7 @@ class FetchJeepTest extends FetchJeepTestSupport {
 	
 	// When: a connection is made to the URI
 	ResponseEntity<List<Jeep>> response = 
-		restTemplate.exchange
+		getRestTemplate().exchange
 		(uri, HttpMethod.GET, null, 
 			new ParameterizedTypeReference<>() {});
 	
@@ -50,13 +46,18 @@ class FetchJeepTest extends FetchJeepTestSupport {
 	assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);  
 	
 	//and: the actual list is the same as the expected list
+	List<Jeep> actual = response.getBody();
 	List<Jeep> expected = buildExpected();
 	
-	assertThat(response.getBody()).isEqualTo(expected);
+	
+	assertThat(actual).isEqualTo(expected);
     }
     
+
+    
+
     @Autowired
-    private TestRestTemplate restTemplate;
+    private TestRestTemplate getRestTemplate;
     
     @LocalServerPort
     private int serverPort;

@@ -1,18 +1,14 @@
-/**
- * 
- */
-package com.promineotech.jeep.service;
+package com.promineotech.jeep.dao;
 
 import java.util.List;
 
 import com.promineotech.jeep.enitiy.Jeep;
 import com.promineotech.jeep.enitiy.JeepModel;
 
-public interface JeepSaleService {
-
- 
-    List<Jeep> fetchJeeps(JeepModel model, String trim);
-
+public interface JeepSalesDao {
     
+    
+
+    List<Jeep> fetchJeeps(JeepModel model, String trim);
 
 }

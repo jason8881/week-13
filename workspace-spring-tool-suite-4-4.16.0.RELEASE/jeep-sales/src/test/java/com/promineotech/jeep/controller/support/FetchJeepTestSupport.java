@@ -4,6 +4,7 @@
 package com.promineotech.jeep.controller.support;
 
 import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import com.promineotech.jeep.enitiy.Jeep;
@@ -12,7 +13,8 @@ import com.promineotech.jeep.enitiy.JeepModel;
 public class FetchJeepTestSupport extends BaseTest  {
 protected List<Jeep> buildExpected() {
 	
-	List<Jeep> list = new LinkedList<>();
+List<Jeep> list = new LinkedList<>();
+
 	//formatter:off
 	list.add(Jeep.builder()
 		.modelId(JeepModel.WRANGLER)
@@ -28,9 +30,11 @@ protected List<Jeep> buildExpected() {
 		.numDoors(4)
 		.wheelSize(17)
 		.basePrice(new BigDecimal("31975.00"))
-	         .build());
+	        .build());
 		
 	// @formatter:on
+	
+	Collections.sort(list);
 	return list;
     }
 }
